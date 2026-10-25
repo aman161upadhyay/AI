@@ -1,0 +1,31 @@
+{
+ "id": "design-001",
+ "agent": "design-agent",
+ "title": "Blinded pairwise anti-default review",
+ "gold": {
+  "criteria": "Prefer task-specific structure in the booking brief; remove fabricated proof; retain requested purple in the boundary brief."
+ },
+ "rubric": [
+  {
+   "criterion": "Task-specific reasoning",
+   "weight": 40,
+   "pass_if": "Choice cites user decision and catalogue IDs rather than a universal style ban."
+  },
+  {
+   "criterion": "Integrity",
+   "weight": 40,
+   "pass_if": "Invented logos are rejected before preference scoring."
+  },
+  {
+   "criterion": "Blinding",
+   "weight": 20,
+   "pass_if": "Reviewer hides labels and permits tie or unusable judgments."
+  }
+ ],
+ "judge": "pairwise",
+ "anti_patterns": [
+  "Banning purple in every case.",
+  "Claiming that preference proves conversion."
+ ],
+ "source": "Research 05 section 5.f and design-slop catalogue."
+}

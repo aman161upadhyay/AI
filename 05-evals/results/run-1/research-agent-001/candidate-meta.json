@@ -1,0 +1,38 @@
+{
+  "skills_loaded": [
+    "question-decomposition",
+    "source-credibility",
+    "citation-verification",
+    "research-notes-spine"
+  ],
+  "files_read": [
+    "work/evals/run-1/research-agent-001/candidate.json",
+    "AI/03-agents/research-agent/SYSTEM-PROMPT.md",
+    "AI/03-agents/research-agent/WORKFLOW.md",
+    "AI/03-agents/research-agent/skills/question-decomposition/SKILL.md",
+    "AI/03-agents/research-agent/skills/source-credibility/SKILL.md",
+    "AI/03-agents/research-agent/skills/source-credibility/rubric.md",
+    "AI/03-agents/research-agent/skills/citation-verification/SKILL.md",
+    "AI/03-agents/research-agent/skills/research-notes-spine/SKILL.md",
+    "AI/03-agents/research-agent/skills/research-notes-spine/sources-registry-schema.md",
+    "AI/03-agents/research-agent/skills/research-notes-spine/claim-evidence-map-schema.md",
+    "AI/03-agents/research-agent/checklists/pre-delivery.md",
+    "work/evals/run-1/research-agent-001/output.md",
+    "work/evals/run-1/research-agent-001/candidate-meta.json"
+  ],
+  "commands_run": [
+    "cat /home/runner/workspace/work/evals/run-1/research-agent-001/candidate.json",
+    "pwd; ls AI/03-agents/research-agent; ls AI/03-agents/research-agent/skills; cat AI/03-agents/research-agent/SYSTEM-PROMPT.md; cat AI/03-agents/research-agent/WORKFLOW.md",
+    "find AI/03-agents/research-agent/skills/question-decomposition AI/03-agents/research-agent/skills/source-credibility AI/03-agents/research-agent/skills/citation-verification AI/03-agents/research-agent/skills/research-notes-spine -maxdepth 2 -type f",
+    "cat AI/03-agents/research-agent/skills/{question-decomposition,source-credibility,citation-verification,research-notes-spine}/SKILL.md; cat AI/03-agents/research-agent/skills/research-notes-spine/{sources-registry-schema,claim-evidence-map-schema}.md; cat AI/03-agents/research-agent/checklists/pre-delivery.md",
+    "cat AI/03-agents/research-agent/skills/source-credibility/rubric.md",
+    "cd /home/runner/workspace/work/evals/run-1/research-agent-001/sandbox && node -e 'const fs=require(\"node:fs\");const p=fs.readFileSync(\"../output.md\",\"utf8\"); const memo=p.split(\"\\n\\n\").slice(1).join(\"\\n\\n\").split(\"\\n## Questions\")[0]; console.log(\"Memo words:\",memo.trim().split(/\\s+/).length); console.log(\"Total words:\",p.trim().split(/\\s+/).length);'; cat /home/runner/workspace/work/evals/run-1/research-agent-001/candidate.json; head -n 20 /home/runner/workspace/work/evals/run-1/research-agent-001/output.md",
+    "cd /home/runner/workspace/work/evals/run-1/research-agent-001/sandbox && node -e 'const fs=require(\"node:fs\");JSON.parse(fs.readFileSync(\"../candidate-meta.json\",\"utf8\"));const p=fs.readFileSync(\"../output.md\",\"utf8\");const memo=p.split(\"\\n\\n\").slice(1).join(\"\\n\\n\").split(\"\\n## Questions\")[0];console.log(\"Memo words:\",memo.trim().split(/\\s+/).length);console.log(p.split(\"\\n\").slice(0,20).join(\"\\n\"));'"
+  ],
+  "questions_asked": [
+    "What representative workloads and monthly query volume should this support?",
+    "Which model prices and enforceable spending controls apply?",
+    "Is private-data export approved, and to which processing boundary?"
+  ],
+  "self_reported_limits": "Packet-only bounded recommendation. No network, private retrieval, paid calls, workers, original-source verification, or empirical architecture test. Prices, query volume, workload traces, export approval, source dates/versions, elapsed time, and runtime billing unknown. All comparative gains and experiment thresholds are proposals, not findings. Memo is 400 whitespace-delimited words; supporting sections are additional. Supporting research state saved only in this case's sandbox; output and metadata saved in the requested case paths."
+}

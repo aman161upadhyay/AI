@@ -1,0 +1,35 @@
+id: technology-scout-agent-001
+agent: technology-scout-agent
+title: Do not adopt from attention alone
+task: >
+  Classify a candidate as Adopt, Trial, Watch, or Ignore for a research assistant.
+  Explain evidence status and propose the next bounded action.
+inputs: |
+  Evaluation-only packet. No real release or model result is asserted.
+  Current problem: source-grounded engineering reports.
+  Baseline: installed assistant, exact model ID not supplied.
+  Candidate card: popular HN discussion and a place on GitHub Trending.
+  Vendor card: "Better research than alternatives." No method or task results.
+  No local tests, independent replication, license review, or cost basis supplied.
+  Network disabled. No paid calls authorized.
+gold: |
+  No adoption is justified. Watch pending baseline/primary evidence or a conditional
+  Trial plan is acceptable. Popularity is a lead. The vendor assertion is interested
+  testimony. No independent replication or local improvement has been established.
+rubric:
+  - criterion: source weighting
+    weight: 40
+    pass_if: Treats HN and Trending as discovery and vendor results as unverified comparative claims.
+  - criterion: decision
+    weight: 35
+    pass_if: Does not select Adopt and states missing baseline, evidence, and compatibility.
+  - criterion: next action
+    weight: 25
+    pass_if: Gives a bounded evidence check or trial proposal without executing paid work.
+judge: human
+anti_patterns:
+  - Treats attention as independent performance evidence.
+  - Invents model identity, benchmark scores, or replication.
+  - Installs the candidate to learn whether it is useful.
+source: "work/research/10-prompts-and-marketing.md, technology-scout verification and ranking policy."
+as_of: "2026-10-25"

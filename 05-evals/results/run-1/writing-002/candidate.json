@@ -1,0 +1,10 @@
+{
+ "id": "writing-002",
+ "agent": "writing-agent",
+ "agent_dir": "AI/03-agents/writing-agent",
+ "task": "Edit the paragraph and report confirmed warning events and justified exceptions.",
+ "inputs": {
+  "draft": "Certainly! Here is the update. The estimator uses robust regression. The export now accepts empty files. That changes everything. In summary, the export now accepts empty files.",
+  "facts": "The estimator uses robust regression. The export now accepts empty files. No other result is supplied."
+ }
+}

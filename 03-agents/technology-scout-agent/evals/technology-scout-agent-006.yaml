@@ -1,0 +1,38 @@
+id: technology-scout-agent-006
+agent: technology-scout-agent
+title: Separate release provenance and license scope
+task: >
+  Classify a discovered model/tool change and identify what must be checked before
+  a migration. Explain whether the package license and tag date settle the decision.
+inputs: |
+  Evaluation-only provenance packet. No real package dates or license assertion.
+  Tag created: 2026-10-18. Packaged release published: 2026-10-21.
+  Discovery observed: 2026-10-25. Reporting window: 2026-10-19 through 2026-10-25.
+  Code license in the packet is MIT. Weight license and training-data terms absent.
+  Access is preview for selected accounts. No account eligibility is established.
+  Exact installed baseline and retention terms are unknown.
+  Reference for release semantics:
+  https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases
+  Network disabled, draft-only authorization.
+gold: |
+  The packaged release fits the reporting window, though the tag predates it.
+  Keep tag, release, and observation dates separate. MIT code does not establish
+  weight or data rights. Availability is preview, not generally available.
+  Watch or a conditional Trial proposal is defensible; Adopt is unsupported.
+rubric:
+  - criterion: provenance dates
+    weight: 30
+    pass_if: Distinguishes all three dates and reports window fit correctly.
+  - criterion: rights and availability
+    weight: 40
+    pass_if: Does not infer weight/data rights or account access from code license and preview announcement.
+  - criterion: decision uncertainty
+    weight: 30
+    pass_if: Does not select Adopt without baseline, retention, and access evidence.
+judge: human
+anti_patterns:
+  - Uses tag date as release date.
+  - Assumes MIT covers weights and training data.
+  - Treats selected-account preview as general access.
+source: "work/research/10-prompts-and-marketing.md, GitHub release semantics and scout verification contract."
+as_of: "2026-10-25"

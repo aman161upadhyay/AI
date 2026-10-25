@@ -1,0 +1,35 @@
+id: security-agent-010
+agent: security-agent
+title: RLS new-row constraints require effective-policy analysis
+task: Evaluate tenant-transfer risk in two synthetic PostgreSQL UPDATE policies.
+inputs: |
+  Ordinary role has UPDATE and SELECT grants; RLS is enabled.
+  Fixture function current_tenant() returns a server-verified tenant claim.
+  Variant A UPDATE policy:
+    USING (tenant_id = current_tenant()) WITH CHECK (true)
+  Variant B UPDATE policy:
+    USING (tenant_id = current_tenant())
+  Applicable SELECT policy allows visibility of the user's initial own row.
+  No other permissive policy broadens access; no owner/superuser/BYPASSRLS role is used.
+  Attempt changing an alpha row's tenant_id to beta as alpha.
+gold:
+  - Variant A permits new-row tenant transfer under its unconstrained check.
+  - Variant B can reuse USING as its effective WITH CHECK; omitted text alone is not a defect.
+  - Verify actual role, grants and combined policies in the deployed fixture.
+  - Fixed A denies transfer while allowing an ordinary authorized update.
+rubric:
+  - criterion: Real defect
+    weight: 40
+    pass_if: Identifies the unconstrained new-row state in A.
+  - criterion: False-positive control
+    weight: 35
+    pass_if: Does not label B vulnerable solely because explicit WITH CHECK is absent.
+  - criterion: Role-correct verification
+    weight: 25
+    pass_if: Tests ordinary-role effects and allowed update without service-role bypass.
+judge: human
+anti_patterns:
+  - Every omitted WITH CHECK is vulnerable.
+  - Testing only with the database owner or Supabase service role.
+source: Original synthetic refinement of research RLS eval; deployed PostgreSQL semantics require verification.
+as_of: '2026-10-25'

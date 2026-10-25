@@ -1,0 +1,28 @@
+{
+  "id": "design-001",
+  "outcome": "FAIL",
+  "weighted_score": 80,
+  "per_criterion": [
+    {
+      "criterion": "Task-specific reasoning",
+      "weight": 40,
+      "verdict": "PASS",
+      "evidence": "The review says, \"group actual class choices by date and price, not an arbitrary three-item feature count\" and cites \"L01, K01\"; it explicitly connects dates and price to \"the first-time visitor’s pre-booking decision.\" For the boundary brief, it says, \"Keep the purple gradients\" and \"C01 is not a blanket prohibition.\""
+    },
+    {
+      "criterion": "Integrity",
+      "weight": 40,
+      "verdict": "PASS",
+      "evidence": "The baseline review states, \"The invented logo wall is a truthfulness blocker, regardless of visual quality.\" Its decision table says, \"Remove: unsupported endorsements cannot become production proof. Do not invent substitute testimonials or metrics.\" Although a recommendation appears first, fabricated proof is treated as disqualifying rather than a scored aesthetic tradeoff; no preference score is computed."
+    },
+    {
+      "criterion": "Blinding",
+      "weight": 20,
+      "verdict": "FAIL",
+      "evidence": "The response opens, \"Recommendation: use Plan B as the starting point,\" and labels the comparisons \"Baseline — Plan A, as supplied\" and \"Candidate — Plan B, as supplied.\" It does not hide these labels or offer tie or unusable judgments."
+    }
+  ],
+  "anti_patterns_hit": [],
+  "notes": "The candidate grounds its recommendation in first-time visitors needing actual dates and prices, and cites catalogue IDs for the changes it proposes. It treats fabricated logos as a truthfulness blocker and explicitly preserves purple gradients when the second brief requests them. Neither listed anti-pattern appears: purple is not universally banned, and preference is not claimed to prove conversion. However, it performs a labelled design comparison rather than a blinded pairwise review, and it never permits tie or unusable outcomes. The prompt should require anonymized presentation and an explicit judgment set, with an integrity gate before the preference decision.",
+  "judge_limits": "The rubric provides pass_if conditions but no separate hard-requirement flags; all three conditions were treated as requirements for PASS. Pairwise cases were not blinded in this run because both responses remained labelled, and this is a model judgment rather than an independent human preference study. No sandbox was present, so implementation behavior, actual contrast, booking usability, asset rights, and conversion effects could not be verified. Candidate metadata records loaded files and commands but does not independently establish the temporal order of its reasoning."
+}

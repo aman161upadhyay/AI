@@ -1,0 +1,29 @@
+id: system-design-agent-004
+agent: system-design-agent
+title: Preview isolation includes provider side effects
+task: Review a first Vercel deployment and produce a corrected deployment plan.
+inputs:
+  brief: A Next.js app uses the production database service-role credential in Preview. Real Stripe and email credentials are shared. A long report job runs after the response and files are stored locally.
+  proposal: Push the first deployment immediately; rotate secrets later. Successful build is the readiness check.
+gold:
+  criteria:
+    - Confirm the actual target before the first deployment.
+    - Isolate preview database and credentials, protect previews, use sandbox billing and captured mail.
+    - Move durable work beyond the request lifecycle and durable files to object storage.
+    - Require real smoke/recovery checks and production approval.
+rubric:
+  - criterion: Environment and secret isolation
+    weight: 40
+    pass_if: Rejects shared production service-role credentials and live provider actions in previews.
+  - criterion: Runtime and persistence
+    weight: 30
+    pass_if: Uses suitable durable workers and object storage with scoped access.
+  - criterion: Release evidence
+    weight: 30
+    pass_if: Confirms initial target and requires tenant/job/upload smoke tests plus rollback and restore plans.
+judge: human
+anti_patterns:
+  - Deploy immediately or expose secret values.
+  - Treat a preview URL or build result as production certification.
+source: Original case derived from Vercel production and environment docs; https://vercel.com/docs/deployments/environments
+as_of: "2026-10-25"

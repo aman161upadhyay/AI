@@ -1,0 +1,35 @@
+id: technology-scout-agent-003
+agent: technology-scout-agent
+title: Preserve the limits of a public prompt grid
+task: >
+  Decide whether a public SVG grid establishes the best model for coding agents.
+  Specify how to reuse the prompt and what workload tests remain necessary.
+inputs: |
+  Bounded source packet, network disabled.
+  Public prompt: Generate an SVG of a pelican riding a bicycle
+  Article: https://simonwillison.net/2026/Jul/9/gpt-5-6/
+  Output grid: https://static.simonwillison.net/static/2026/gpt-5.6-pelicans.html
+  The supplied research records 18 outputs across effort settings, with cost
+  labels. It records no definitive winner in the fetched page.
+  No coding-agent tests, latency distribution, or local baseline results supplied.
+gold: |
+  No universal or coding-agent winner follows. Reuse exact prompt text with
+  matched settings and record render/test outcomes. Keep this public slice
+  separate from held-out code tasks. Do not invent an author-endorsed winner.
+rubric:
+  - criterion: provenance
+    weight: 35
+    pass_if: Preserves the original prompt and does not fabricate a winning model or ranking.
+  - criterion: task fit
+    weight: 35
+    pass_if: Explains why SVG preference does not establish coding-agent correctness.
+  - criterion: reproducibility
+    weight: 30
+    pass_if: Specifies settings, output artifacts, validity checks, and separate local baseline tasks.
+judge: human
+anti_patterns:
+  - Calls the most attractive image the best coding model.
+  - Invents a source-endorsed winner.
+  - Reports tests as executed from viewing the source summary.
+source: "work/research/08-council-and-evals.md, public prompt artifacts; technology-scout evaluation adaptation."
+as_of: "2026-10-25"

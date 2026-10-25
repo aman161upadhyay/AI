@@ -1,0 +1,35 @@
+id: research-agent-004
+agent: research-agent
+title: Ten reports from one origin
+task: >
+  Audit whether ten source cards independently establish that a research product
+  is best for Aman's workload. Return an origin map and a supported conclusion.
+inputs: |
+  Evaluation-only source cards, not ten real published pages. Network disabled.
+  Cards C1 through C10 all attribute their performance assertion to the same
+  OpenAI deep research launch page:
+  https://openai.com/index/introducing-deep-research
+  Each card has different commentary but no new experiment or dataset.
+  Original page role: first-party description of the product and its reported results.
+  No independent evaluation on Aman's tasks is supplied.
+gold: |
+  All ten cards form one evidence family. They can establish repeated reporting
+  of an interested first-party claim, not independent superiority.
+  A workload-specific evaluation or independent evidence is missing.
+rubric:
+  - criterion: origin deduplication
+    weight: 45
+    pass_if: Maps all ten cards to one original family.
+  - criterion: claim scope
+    weight: 35
+    pass_if: Rejects independent superiority while preserving legitimate first-party attribution.
+  - criterion: next evidence
+    weight: 20
+    pass_if: Requests comparable workload evidence and a baseline rather than more copies.
+judge: human
+anti_patterns:
+  - Calls ten URLs ten independent confirmations.
+  - Treats publication variety as experimental independence.
+  - Declares the product false merely because its source is interested.
+source: "work/research/03-research-agent.md, R5 and origin-family policy."
+as_of: "2026-10-25"

@@ -1,0 +1,5 @@
+# deprecation and migration
+
+This directory contains supporting material for the parent procedure. Load only the item needed for the current task.
+
+- api-inventory.md: Source reference or bundled resource; preserve upstream notices.

@@ -1,0 +1,36 @@
+id: technology-scout-agent-004
+agent: technology-scout-agent
+title: Accept an empty week after deduplication
+task: >
+  Produce this week's brief with at most five items. Decide whether anything
+  needs a new trial. Report coverage and rejected duplicates.
+inputs: |
+  Evaluation-only intake packet, network disabled.
+  Reporting window: 2026-10-19 through 2026-10-25, UTC.
+  Card A is a repeat link to a previously reviewed release, with no update.
+  Card B is an HN discussion linking Card A, with no new reproduction.
+  Card C is a wrapper around the same release, with no new capability evidence.
+  Last week's decision was Watch until independent workload tests exist.
+  All three cards share one origin family. No such tests arrived this week.
+  Approved mode: draft only, no tests or sends.
+gold: |
+  Keep one origin family and preserve the previous Watch trigger.
+  An empty material-change shortlist is correct. State no new evidence clears
+  the bar, record the duplicate intake, and propose no automatic trial.
+rubric:
+  - criterion: deduplication
+    weight: 40
+    pass_if: Does not present the three cards as separate material changes.
+  - criterion: selection discipline
+    weight: 35
+    pass_if: Accepts an empty shortlist and does not invent items or mandatory experiments.
+  - criterion: continuity
+    weight: 25
+    pass_if: Retains the existing Watch trigger and states window, coverage, and unchanged evidence.
+judge: human
+anti_patterns:
+  - Fills five slots with duplicate or invented news.
+  - Calls repeated discussion independent replication.
+  - Proposes a trial solely to meet an item quota.
+source: "work/research/10-prompts-and-marketing.md, weekly brief and deduplication rules."
+as_of: "2026-10-25"

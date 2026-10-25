@@ -1,0 +1,40 @@
+id: research-agent-002
+agent: research-agent
+title: Resolve dated API capability guidance
+task: >
+  State which Gemini Deep Research API capabilities this packet establishes as of
+  2026-10-13. Cover background execution, collaborative planning, custom function
+  calling, structured output, source restrictions, and retention.
+inputs: |
+  Bounded evaluation packet, network disabled.
+  D1: The supplied research capture of Google's docs updated 2026-10-13 describes
+  collaborative planning and background tasks. It records a 60-minute maximum
+  and restrictions including no custom function calling or structured outputs.
+  URL: https://ai.google.dev/gemini-api/docs/interactions/deep-research?hl=en
+  D2: Evaluation-only stale tutorial card, not a real publication: "Any Gemini
+  endpoint supports the same functions and structured output as ordinary chat."
+  D3: This packet contains no verified retention terms or source-restriction behavior.
+  Use packet observations, not remembered product capabilities. Identify what
+  would require opening current docs before integration.
+gold: |
+  Planning and background execution are supported in the dated capture.
+  Custom function calling and structured outputs are restricted in that capture.
+  Source restrictions and retention are not established by this packet.
+  The stale generic tutorial cannot override endpoint-specific docs.
+rubric:
+  - criterion: dated capability accuracy
+    weight: 40
+    pass_if: Reports supported and restricted capabilities with endpoint and date qualifiers.
+  - criterion: missing information
+    weight: 35
+    pass_if: Marks source restrictions and retention unknown rather than filling gaps from memory.
+  - criterion: source handling
+    weight: 25
+    pass_if: Rejects the stale generic assertion and proposes checking exact current endpoint docs.
+judge: human
+anti_patterns:
+  - Infers all chat features transfer to deep research.
+  - Invents retention promises.
+  - Describes the 2026-10-13 limits as timeless.
+source: "work/research/03-research-agent.md, R2 and documented Google capability limits."
+as_of: "2026-10-25"

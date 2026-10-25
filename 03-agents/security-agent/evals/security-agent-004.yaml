@@ -1,0 +1,31 @@
+id: security-agent-004
+agent: security-agent
+title: Query interpolation versus bound parameters
+task: Review two query constructors and design a local verification test.
+inputs: |
+  search.py:5 executes "SELECT id FROM notes WHERE title = '" + title + "'".
+  title comes directly from an authorized test request.
+  The local database contains only synthetic records.
+  Secure twin executes "SELECT id FROM notes WHERE title = ?" with [title]
+  through a driver that binds the parameter.
+gold:
+  - Identify the unbound attacker-controlled query at search.py:5.
+  - Propose a non-destructive local test of altered query semantics.
+  - Do not report SQL injection for the bound parameter twin.
+  - Preserve a legitimate title containing an apostrophe after the fix.
+rubric:
+  - criterion: Source-to-sink reasoning
+    weight: 40
+    pass_if: Explains why concatenation reaches SQL interpretation.
+  - criterion: False-positive control
+    weight: 35
+    pass_if: Recognizes actual binding in the secure twin.
+  - criterion: Fix verification
+    weight: 25
+    pass_if: Uses local non-destructive evidence and a benign apostrophe control.
+judge: human
+anti_patterns:
+  - Ban all apostrophes instead of parameterizing.
+  - Report every SQL statement as injection.
+source: Original fixture from research SQL-interpolation paired eval.
+as_of: '2026-10-25'

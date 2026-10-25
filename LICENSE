@@ -1,0 +1,45 @@
+Licence of this repository
+
+1. Original work. Text, prompts, checklists, eval cases, templates, scripts and
+   documentation written for this repository are licensed under the Creative
+   Commons Attribution 4.0 International licence (CC BY 4.0):
+   https://creativecommons.org/licenses/by/4.0/
+   Attribution: "AI: a compilation of AI harnesses" by Aman Upadhyay,
+   https://github.com/aman161upadhyay/AI
+   This covers every file whose authorship is ours, including README.md,
+   FOR-AMAN.md and SOURCE.md files that sit inside folders that also hold
+   third-party material.
+
+2. Third-party work keeps its own licence. A file is third-party when the
+   SOURCE.md in its folder (or the nearest SOURCE.md above it) lists it as
+   vendored, adapted or converted. The upstream licence text is reproduced in
+   the LICENSE or NOTICE file next to it, with one exception: where the
+   copyright holder declares a licence but publishes no licence file (as of
+   2026-10-25 only vercel-labs/agent-skills, README "License: MIT"), the
+   folder carries LICENSE-NOTE.md with the declaration, its URL and commit,
+   and the standard text of the declared licence for reference; no copyright
+   notice is invented. Modified third-party files carry a modification notice
+   after their front matter. Examples:
+   - 01-skills-library/anthropic/ and the Anthropic skills under
+     03-agents/design-agent/skills/vendored/anthropic/: Apache-2.0.
+   - 01-skills-library/community/<owner>__<repo>/: the licence recorded in that
+     folder's SOURCE.md (MIT, Apache-2.0, CC0-1.0, CC BY 4.0 or CC BY-SA 4.0).
+   - 02-prompts/fabric-patterns/: MIT (Daniel Miessler's Fabric).
+   - 06-reference-library/papers/ and 06-reference-library/figures/: the
+     authors' CC BY 4.0 grant for Clark, Martin and Mahowald (2026); our
+     summary block inside the paper file is covered by section 1.
+
+3. Share-alike material is isolated. CC BY-SA 4.0 material lives only in
+   folders whose name or SOURCE.md marks it as share-alike:
+   06-reference-library/articles/wikipedia-signs-of-ai-writing-cc-by-sa/,
+   01-skills-library/community/trailofbits__skills/, the Trail of Bits skills
+   under 03-agents/security-agent/skills/vendored/, and the OWASP-derived
+   authorization reference under 03-agents/security-agent/skills/vendored/sentry/.
+   Derivatives of those files must be shared under the same licence.
+
+4. Linked, not copied. Sources whose licence did not permit redistribution,
+   or that had no licence, are linked and described in our own words; nothing
+   from them is reproduced here beyond short quotations with attribution.
+
+If a file's status is unclear, the nearest SOURCE.md decides; if there is
+none, the file is original work under section 1.

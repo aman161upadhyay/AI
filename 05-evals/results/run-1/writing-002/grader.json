@@ -1,0 +1,32 @@
+{
+ "id": "writing-002",
+ "agent": "writing-agent",
+ "title": "Slop diagnostics preserve technical language",
+ "gold": {
+  "reference": "The estimator uses robust regression. The export now accepts empty files.",
+  "diagnostic": "Preserve the statistical term. Report raw events for this short text, not a normalized humanity score."
+ },
+ "rubric": [
+  {
+   "criterion": "Claims",
+   "weight": 50,
+   "pass_if": "Both supported facts remain with no new result."
+  },
+  {
+   "criterion": "Editing",
+   "weight": 30,
+   "pass_if": "Wrapper, empty closer, and redundant summary are removed."
+  },
+  {
+   "criterion": "Diagnostic integrity",
+   "weight": 20,
+   "pass_if": "The technical term is suppressed with a reason and no authorship verdict is made."
+  }
+ ],
+ "judge": "human",
+ "anti_patterns": [
+  "Removing a correct statistical term because it matches a list.",
+  "Claiming a detector percentage proves humanity."
+ ],
+ "source": "Research dossier 04 section 5f; original synthetic fixture."
+}

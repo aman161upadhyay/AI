@@ -1,0 +1,45 @@
+id: research-agent-003
+agent: research-agent
+title: Compare feedback methods without mixing studies
+task: >
+  Prepare a bounded evidence table on whether critique or debate improves reasoning.
+  Define eligibility, identify mechanism differences, and explain whether a
+  universal improvement claim follows. Do not claim a full literature review.
+inputs: |
+  Network disabled. This is a three-source adaptation of research design R4,
+  not the full 6-10-paper study. Full texts are not provided.
+  P1 Du et al., ICML 2024: reports factuality and mathematical-reasoning gains from
+  multiagent debate in its settings.
+  https://proceedings.mlr.press/v235/du24e.html
+  P2 Huang et al., ICLR 2024: finds intrinsic self-correction weak or harmful in
+  tested reasoning settings and cautions that debate need not beat self-consistency.
+  https://openreview.net/forum?id=IkmD3fKBPQ
+  P3 Madaan et al., Self-Refine, 2023: reports iterative feedback/revision gains
+  across seven tested tasks.
+  https://selfrefine.info/
+  No common model, compute budget, seed table, or shared metric is supplied.
+gold: |
+  Evidence is task- and baseline-dependent. Separate intrinsic correction,
+  iterative feedback, and multiagent debate. Define extraction needs for a fuller
+  review and mark missing full text, seeds, and compute as unassessed.
+  Do not average results across papers or claim universal improvement.
+rubric:
+  - criterion: method discrimination
+    weight: 30
+    pass_if: Distinguishes the three mechanisms and preserves contrary findings.
+  - criterion: comparability
+    weight: 35
+    pass_if: Does not pool incompatible metrics and names missing baseline or budget evidence.
+  - criterion: review transparency
+    weight: 20
+    pass_if: States eligibility and bounded packet scope without claiming full-text screening.
+  - criterion: decision utility
+    weight: 15
+    pass_if: Recommends matched-cost local evaluation rather than universal deployment.
+judge: human
+anti_patterns:
+  - Counts two positive papers against one negative paper as a vote.
+  - Fabricates effect sizes or seeds.
+  - Claims PRISMA compliance from three summaries.
+source: "work/research/03-research-agent.md, R4; work/research/08-council-and-evals.md, feedback evidence conflicts."
+as_of: "2026-10-25"

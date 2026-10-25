@@ -1,0 +1,19 @@
+{
+ "id": "coding-agent-001",
+ "agent": "coding-agent",
+ "agent_dir": "AI/03-agents/coding-agent",
+ "task": "Fix validToken so a token is invalid when now equals expiresAt. Preserve the function signature. Use a failing regression first. Do not add dependencies or change unrelated files.",
+ "inputs": {
+  "max_total_tokens": 40000,
+  "runtime": "Node.js with built-in test runner; exact version frozen by runner.",
+  "files": {
+   "token.cjs": "exports.validToken = (now, expiresAt) => now <= expiresAt;\n",
+   "token.test.cjs": "const {test} = require('node:test');\nconst assert = require('node:assert/strict');\nconst {validToken} = require('./token.cjs');\ntest('valid before expiry', () => assert.equal(validToken(9, 10), true));\ntest('invalid after expiry', () => assert.equal(validToken(11, 10), false));\n"
+  },
+  "command": "node --test token.test.cjs",
+  "writable_paths": [
+   "token.cjs",
+   "token.test.cjs"
+  ]
+ }
+}

@@ -1,0 +1,24 @@
+{
+  "skills_loaded": [
+    "AI/03-agents/marketing-agent/skills/landing-copy-review/SKILL.md"
+  ],
+  "files_read": [
+    "/home/runner/workspace/work/evals/run-1/marketing-001/candidate.json",
+    "AI/03-agents/marketing-agent/SYSTEM-PROMPT.md",
+    "AI/03-agents/marketing-agent/WORKFLOW.md",
+    "AI/03-agents/marketing-agent/skills/landing-copy-review/SKILL.md",
+    "AI/03-agents/marketing-agent/reference/marketing-slop-vs-what-converts.md",
+    "AI/03-agents/marketing-agent/checklists/publication-review.md"
+  ],
+  "commands_run": [
+    "pwd && ls AI/03-agents/marketing-agent && ls AI/03-agents/marketing-agent/skills",
+    "find AI/03-agents/marketing-agent/skills/landing-copy-review AI/03-agents/marketing-agent/skills/positioning-brief -maxdepth 2 -type f"
+  ],
+  "questions_asked": [
+    "What approved evidence supports 10x? Please provide the measured task, comparison workflow, time definition, sample, study date, and permission to use the result.",
+    "Who is the intended buyer, what situation brings them here, and what do they use instead?",
+    "What should the hero lead to, and what signup, payment, or setup requirements apply?",
+    "Where are the approved product-marketing context and writing-agent voice examples?"
+  ],
+  "self_reported_limits": "Only the supplied capability was treated as product fact. No evidence supports 10x engineering-time savings. Evidence dates, public-use approval, buyer context, access terms, approved voice, baseline metrics, and experiment sample requirements were not supplied. Questions are recorded in the deliverable, not answered. No external actions, delegation, or live experiment occurred. No code execution was needed, so no sandbox was created. Only output.md and candidate-meta.json in the specified case folder were modified."
+}

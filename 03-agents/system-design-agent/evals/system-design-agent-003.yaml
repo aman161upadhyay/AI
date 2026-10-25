@@ -1,0 +1,29 @@
+id: system-design-agent-003
+agent: system-design-agent
+title: Breaking migration cannot rely on code rollback
+task: Design a safe rollout for a required column rename and a large new index.
+inputs:
+  brief: Old code reads full_name. New code requires display_name. There are 20 million existing rows. Requests must continue during deployment and rollback.
+  proposal: Rename the column directly, create the index concurrently inside the ORM migration transaction, and roll code back if any check fails.
+gold:
+  criteria:
+    - Use additive schema then compatible reads/writes and resumable backfill before contraction.
+    - Preserve an old/new code compatibility interval and state irreversible data limits.
+    - Run concurrent index creation outside transaction blocks and inspect invalid indexes after failure.
+    - Serialize migrations and bound lock waits.
+rubric:
+  - criterion: Compatibility and backfill
+    weight: 40
+    pass_if: Provides expand backfill switch contract with resumability and old-code compatibility.
+  - criterion: Index and locking correctness
+    weight: 30
+    pass_if: Rejects concurrent index in transaction and defines failure repair plus lock budget.
+  - criterion: Validation and approval
+    weight: 30
+    pass_if: Requires clean replay old-data upgrade rollback/restore rehearsal and approval before destructive contraction.
+judge: human
+anti_patterns:
+  - Claim that deployment rollback reverses the schema.
+  - Execute the destructive migration without approval.
+source: Original case derived from PostgreSQL CREATE INDEX and Supabase migrations; https://www.postgresql.org/docs/current/sql-createindex.html
+as_of: "2026-10-25"

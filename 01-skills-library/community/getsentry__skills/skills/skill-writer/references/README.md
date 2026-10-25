@@ -1,0 +1,41 @@
+# references
+
+This directory contains supporting material for the parent procedure. Load only the item needed for the current task.
+
+- authoring-path.md: Source reference or bundled resource; preserve upstream notices.
+- claude-argument-substitutions.md: Source reference or bundled resource; preserve upstream notices.
+- claude-dynamic-context.md: Source reference or bundled resource; preserve upstream notices.
+- claude-frontmatter-invocation.md: Source reference or bundled resource; preserve upstream notices.
+- claude-hook-backed.md: Source reference or bundled resource; preserve upstream notices.
+- claude-subagent-fork.md: Source reference or bundled resource; preserve upstream notices.
+- description-optimization.md: Source reference or bundled resource; preserve upstream notices.
+- design-principles.md: Source reference or bundled resource; preserve upstream notices.
+- example-documentation-skill.md: Source reference or bundled resource; preserve upstream notices.
+- example-hook-backed-skill.md: Source reference or bundled resource; preserve upstream notices.
+- example-router-skill.md: Source reference or bundled resource; preserve upstream notices.
+- example-subagent-fork-skill.md: Source reference or bundled resource; preserve upstream notices.
+- example-workflow-process-skill.md: Source reference or bundled resource; preserve upstream notices.
+- execution-shapes.md: Source reference or bundled resource; preserve upstream notices.
+- iteration-evidence.md: Source reference or bundled resource; preserve upstream notices.
+- iteration-path.md: Source reference or bundled resource; preserve upstream notices.
+- layout-argument-driven-skill.md: Source reference or bundled resource; preserve upstream notices.
+- layout-asset-template-skill.md: Source reference or bundled resource; preserve upstream notices.
+- layout-inline-skill.md: Source reference or bundled resource; preserve upstream notices.
+- layout-reference-backed-skill.md: Source reference or bundled resource; preserve upstream notices.
+- layout-script-backed-workflow.md: Source reference or bundled resource; preserve upstream notices.
+- mode-selection.md: Source reference or bundled resource; preserve upstream notices.
+- output-contracts.md: Source reference or bundled resource; preserve upstream notices.
+- reference-architecture.md: Source reference or bundled resource; preserve upstream notices.
+- registration-validation.md: Source reference or bundled resource; preserve upstream notices.
+- skill-evals.md: Source reference or bundled resource; preserve upstream notices.
+- source-adaptation.md: Source reference or bundled resource; preserve upstream notices.
+- source-discovery.md: Source reference or bundled resource; preserve upstream notices.
+- spec-template.md: Source reference or bundled resource; preserve upstream notices.
+- structure-troubleshooting.md: Source reference or bundled resource; preserve upstream notices.
+- synthesis-path.md: Source reference or bundled resource; preserve upstream notices.
+- workflow-orchestrator-workers.md: Source reference or bundled resource; preserve upstream notices.
+- workflow-parallel.md: Source reference or bundled resource; preserve upstream notices.
+- workflow-plan-validate-execute.md: Source reference or bundled resource; preserve upstream notices.
+- workflow-prompt-chaining.md: Source reference or bundled resource; preserve upstream notices.
+- workflow-routing.md: Source reference or bundled resource; preserve upstream notices.
+- workflow-validation-loops.md: Source reference or bundled resource; preserve upstream notices.

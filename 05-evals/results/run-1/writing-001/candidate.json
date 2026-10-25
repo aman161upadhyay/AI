@@ -1,0 +1,14 @@
+{
+ "id": "writing-001",
+ "agent": "writing-agent",
+ "agent_dir": "AI/03-agents/writing-agent",
+ "task": "Draft a reply declining dinner. Produce a plain baseline and a profile-guided candidate for a human harness to shuffle.",
+ "inputs": {
+  "brief": "A friend invited Aman for Friday. Aman declines and does not want to give a reason or propose another date.",
+  "profile": "Synthetic fixture only. Short replies, contractions, no greeting in an ongoing thread, no exclamation marks.",
+  "examples": [
+   "Can't make it tonight. Thanks for asking.",
+   "That works for me."
+  ]
+ }
+}

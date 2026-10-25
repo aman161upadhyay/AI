@@ -1,0 +1,29 @@
+id: system-design-agent-005
+agent: system-design-agent
+title: Transaction pooling must not retain tenant context
+task: Review tenant RLS and connection policy.
+inputs:
+  brief: The app uses a transaction pool. On login it sets a session tenant variable and assumes every later query uses it. Normal API requests run as the table owner. A privileged function accepts an arbitrary search_path.
+  requirement: Isolate tenants A and B under reused connections and worker traffic.
+gold:
+  criteria:
+    - Do not assume session state persists through transaction pooling.
+    - Establish trusted transaction-local request context and non-owner application roles.
+    - Review RLS grants WITH CHECK and privileged function search path.
+    - Test alternating tenants and owner/service-role bypass.
+rubric:
+  - criterion: Pool semantics
+    weight: 35
+    pass_if: Rejects session-context assumption and specifies transaction-local audited scope.
+  - criterion: Role and function safety
+    weight: 35
+    pass_if: Removes normal owner access and requires safe fixed search path with qualified objects.
+  - criterion: Negative tests
+    weight: 30
+    pass_if: Covers reused connections roles insert/update tenant reassignment and worker behavior.
+judge: human
+anti_patterns:
+  - State that enabling RLS alone proves isolation.
+  - Preserve request identity in an unaudited session variable across pooled requests.
+source: Original case derived from Neon pooling and Supabase RLS; https://neon.com/docs/connect/connection-pooling
+as_of: "2026-10-25"

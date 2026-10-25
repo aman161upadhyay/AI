@@ -1,0 +1,29 @@
+id: system-design-agent-001
+agent: system-design-agent
+title: Tenant scope must survive jobs caches and storage
+task: Design an export feature and review the proposed authorization boundary.
+inputs:
+  brief: A user belongs to tenant A. POST /exports accepts organizationId and documentIds. A worker reads documents by ID, stores an export under exports/latest.zip, and a CDN caches downloads by path.
+  proposed_control: The route checks only that the user is logged in. The team says Prisma types prove isolation.
+gold:
+  criteria:
+    - Derive active membership server-side and authorize every document against the tenant.
+    - Carry tenant scope into worker queries and recheck revocation before sensitive execution or delivery.
+    - Scope object keys and cache ownership; use authorized signed downloads.
+    - Reject the claim that ORM types establish authorization and specify two-tenant negative tests.
+rubric:
+  - criterion: Membership and row ownership
+    weight: 35
+    pass_if: Explicitly rejects client organizationId as authority and authorizes all selected rows.
+  - criterion: Non-HTTP boundaries
+    weight: 35
+    pass_if: Covers job revocation plus tenant-specific object and cache access.
+  - criterion: Verifiable handoff
+    weight: 30
+    pass_if: Includes negative tests for tenant-swapped IDs and sends unresolved risks to security review.
+judge: human
+anti_patterns:
+  - Accept login or Prisma types as sufficient isolation.
+  - Share a public latest.zip across tenants.
+source: Original case derived from Supabase RLS and the inspected Trigger.dev ownership model; https://supabase.com/docs/guides/database/postgres/row-level-security
+as_of: "2026-10-25"

@@ -1,0 +1,28 @@
+{
+  "id": "system-design-agent-001",
+  "outcome": "PASS",
+  "weighted_score": 100,
+  "per_criterion": [
+    {
+      "criterion": "Membership and row ownership",
+      "weight": 35,
+      "verdict": "PASS",
+      "evidence": "output.md: \"Client identifiers are selectors, never authority.\" It requires \"Resolve active membership server-side\" and states: \"Creation transaction checks active membership, selects all requested documents with tenant and document permissions, rejects the entire request on any mismatch\" (lines 33, 38, 66)."
+    },
+    {
+      "criterion": "Non-HTTP boundaries",
+      "weight": 35,
+      "verdict": "PASS",
+      "evidence": "output.md: \"Worker rechecks policy before reading and publishing, uses tenant-scoped queries\" (line 75). Storage uses \"tenants/{tenant}/exports/{export}/{attempt}.zip\" with direct public origin denied; \"Gateway-streamed responses use `Cache-Control: private, no-store`; CDN bypass must be verified\" (line 77). Acceptance includes \"revoked/suspended users fail at enqueue, execution and download\" (line 87)."
+    },
+    {
+      "criterion": "Verifiable handoff",
+      "weight": 30,
+      "verdict": "PASS",
+      "evidence": "output.md specifies: \"A cannot create/read/cancel/download B's exports; mixed A/B documents fail atomically; forged queue scope fails\" (line 87). It sends unresolved findings to review: \"All three require security review before release\" (line 42), and assigns a \"security reviewer\" to approve boundaries before rollout (line 89)."
+    }
+  ],
+  "anti_patterns_hit": [],
+  "notes": "The candidate meets all three rubric requirements and explicitly rejects both login-only authorization and Prisma types as proof of isolation. It carries tenant scope through persisted jobs, scoped reads, private immutable objects, and authorization-gated downloads, avoiding a shared public latest.zip. Its two-tenant, mixed-ID, forged-queue, revocation, and warm-cache negative tests make the proposed security handoff actionable. It substitutes authorized gateway streaming for the gold's signed downloads and leaves mid-stream revocation semantics unresolved, but explicitly blocks implementation/release on that policy decision rather than claiming it is solved. A follow-up implementation prompt should require a concrete revocation policy and executed isolation tests; neither is demonstrated here.",
+  "judge_limits": "The rubric requests a human judge; this assessment is by a model. No sandbox directory, implementation, runtime configuration, or executed test results were available, so actual isolation and revocation behavior could not be verified. Candidate metadata reports document inspection only and no application or test execution; the score evaluates the proposed design and handoff, not production correctness."
+}

@@ -1,0 +1,7 @@
+{
+ "id": "technology-scout-agent-001",
+ "agent": "technology-scout-agent",
+ "agent_dir": "AI/03-agents/technology-scout-agent",
+ "task": "Classify a candidate as Adopt, Trial, Watch, or Ignore for a research assistant. Explain evidence status and propose the next bounded action.\n",
+ "inputs": "Evaluation-only packet. No real release or model result is asserted.\nCurrent problem: source-grounded engineering reports.\nBaseline: installed assistant, exact model ID not supplied.\nCandidate card: popular HN discussion and a place on GitHub Trending.\nVendor card: \"Better research than alternatives.\" No method or task results.\nNo local tests, independent replication, license review, or cost basis supplied.\nNetwork disabled. No paid calls authorized.\n"
+}

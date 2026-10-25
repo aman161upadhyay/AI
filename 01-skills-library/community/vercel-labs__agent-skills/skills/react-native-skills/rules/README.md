@@ -1,0 +1,42 @@
+# rules
+
+This directory contains supporting material for the parent procedure. Load only the item needed for the current task.
+
+- _sections.md: Source reference or bundled resource; preserve upstream notices.
+- _template.md: Source reference or bundled resource; preserve upstream notices.
+- animation-derived-value.md: Source reference or bundled resource; preserve upstream notices.
+- animation-gesture-detector-press.md: Source reference or bundled resource; preserve upstream notices.
+- animation-gpu-properties.md: Source reference or bundled resource; preserve upstream notices.
+- design-system-compound-components.md: Source reference or bundled resource; preserve upstream notices.
+- fonts-config-plugin.md: Source reference or bundled resource; preserve upstream notices.
+- imports-design-system-folder.md: Source reference or bundled resource; preserve upstream notices.
+- js-hoist-intl.md: Source reference or bundled resource; preserve upstream notices.
+- list-performance-callbacks.md: Source reference or bundled resource; preserve upstream notices.
+- list-performance-function-references.md: Source reference or bundled resource; preserve upstream notices.
+- list-performance-images.md: Source reference or bundled resource; preserve upstream notices.
+- list-performance-inline-objects.md: Source reference or bundled resource; preserve upstream notices.
+- list-performance-item-expensive.md: Source reference or bundled resource; preserve upstream notices.
+- list-performance-item-memo.md: Source reference or bundled resource; preserve upstream notices.
+- list-performance-item-types.md: Source reference or bundled resource; preserve upstream notices.
+- list-performance-virtualize.md: Source reference or bundled resource; preserve upstream notices.
+- monorepo-native-deps-in-app.md: Source reference or bundled resource; preserve upstream notices.
+- monorepo-single-dependency-versions.md: Source reference or bundled resource; preserve upstream notices.
+- navigation-native-navigators.md: Source reference or bundled resource; preserve upstream notices.
+- react-compiler-destructure-functions.md: Source reference or bundled resource; preserve upstream notices.
+- react-compiler-reanimated-shared-values.md: Source reference or bundled resource; preserve upstream notices.
+- react-state-dispatcher.md: Source reference or bundled resource; preserve upstream notices.
+- react-state-fallback.md: Source reference or bundled resource; preserve upstream notices.
+- react-state-minimize.md: Source reference or bundled resource; preserve upstream notices.
+- rendering-no-falsy-and.md: Source reference or bundled resource; preserve upstream notices.
+- rendering-text-in-text-component.md: Source reference or bundled resource; preserve upstream notices.
+- scroll-position-no-state.md: Source reference or bundled resource; preserve upstream notices.
+- state-ground-truth.md: Source reference or bundled resource; preserve upstream notices.
+- ui-expo-image.md: Source reference or bundled resource; preserve upstream notices.
+- ui-image-gallery.md: Source reference or bundled resource; preserve upstream notices.
+- ui-measure-views.md: Source reference or bundled resource; preserve upstream notices.
+- ui-menus.md: Source reference or bundled resource; preserve upstream notices.
+- ui-native-modals.md: Source reference or bundled resource; preserve upstream notices.
+- ui-pressable.md: Source reference or bundled resource; preserve upstream notices.
+- ui-safe-area-scroll.md: Source reference or bundled resource; preserve upstream notices.
+- ui-scrollview-content-inset.md: Source reference or bundled resource; preserve upstream notices.
+- ui-styling.md: Source reference or bundled resource; preserve upstream notices.

@@ -1,0 +1,28 @@
+{
+  "id": "writing-002",
+  "outcome": "PASS",
+  "weighted_score": 100,
+  "per_criterion": [
+    {
+      "criterion": "Claims",
+      "weight": 50,
+      "verdict": "PASS",
+      "evidence": "The edited paragraph states: \"The estimator uses robust regression. The export now accepts empty files.\" Both supplied facts remain verbatim, with no additional result."
+    },
+    {
+      "criterion": "Editing",
+      "weight": 30,
+      "verdict": "PASS",
+      "evidence": "The edited paragraph contains only \"The estimator uses robust regression. The export now accepts empty files.\" The warning report confirms \"Removed both opening sentences,\" \"Removed the sentence without inventing a substitute consequence,\" and \"Removed the duplicate, preserving the earlier sentence.\""
+    },
+    {
+      "criterion": "Diagnostic integrity",
+      "weight": 20,
+      "verdict": "PASS",
+      "evidence": "\"‘Robust regression’ is legitimate statistical terminology, explicitly supplied in the brief, not an unsupported adjective promising reliability\" justifies retaining the term; the report calls this \"the one suppressed lexical warning.\" It reports \"three editorial warning events\" and explicitly states \"Warnings are editing cues, not evidence of AI authorship.\""
+    }
+  ],
+  "anti_patterns_hit": [],
+  "notes": "The candidate preserved both supported claims verbatim and removed the assistant wrapper, unsupported impact statement, and redundant summary. It justified suppressing the lexical warning on the statistical term and reported raw warning events without an authorship verdict or detector percentage. Neither listed anti-pattern is exhibited, and no rubric-level error was found. The intake question, voice-calibration discussion, and approval language add unnecessary process overhead for this narrowly specified editing task; a prompt author could request only the edited paragraph and diagnostic report.",
+  "judge_limits": "The configured judge method is human, but this assessment was performed by a model. No sandbox directory was present, so no implementation or regex tests were available to run; the reported regex behavior and internal review process were not independently executed. The rubric's editing and diagnostic requirements were assessed directly from output.md, with candidate-meta.json used only as self-reported execution context."
+}

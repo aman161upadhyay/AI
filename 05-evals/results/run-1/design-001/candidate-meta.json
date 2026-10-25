@@ -1,0 +1,26 @@
+{
+  "skills_loaded": [
+    "AI/03-agents/design-agent/skills/design-brief-intake/SKILL.md",
+    "AI/03-agents/design-agent/skills/uniqueness-review/SKILL.md"
+  ],
+  "files_read": [
+    "/home/runner/workspace/work/evals/run-1/design-001/candidate.json",
+    "AI/03-agents/design-agent/SYSTEM-PROMPT.md",
+    "AI/03-agents/design-agent/WORKFLOW.md",
+    "AI/03-agents/design-agent/skills/design-brief-intake/SKILL.md",
+    "AI/03-agents/design-agent/skills/uniqueness-review/SKILL.md",
+    "AI/03-agents/design-agent/design-slop/catalogue.md",
+    "/home/runner/workspace/work/evals/run-1/design-001/output.md"
+  ],
+  "commands_run": [
+    "ls -la AI/03-agents/design-agent && ls -la AI/03-agents/design-agent/skills",
+    "find AI/03-agents/design-agent/skills/design-critique AI/03-agents/design-agent/skills/uniqueness-review -maxdepth 2 -type f",
+    "ls -la AI/03-agents/design-agent/skills/design-brief-intake"
+  ],
+  "questions_asked": [
+    "What are the approved class dates and prices, including currency and applicable charges?",
+    "What booking destination and confirmation event should the action use?",
+    "Which existing brand tokens/components, approved photograph and usage rights, and target platforms/widths must be preserved?"
+  ],
+  "self_reported_limits": "Plan-only comparison using supplied inputs. Missing commercial facts and implementation constraints are explicit questions, not fabricated UI. No external actions, code execution, application edits, rendered inspection, interaction tests or measured contrast checks performed. No evaluation criteria or other case folders opened. Design-critique skill not loaded because there is no rendered draft."
+}

@@ -1,0 +1,44 @@
+id: research-agent-008
+agent: research-agent
+title: One-page memo without a false benchmark winner
+task: >
+  Write a memo of at most 500 words deciding whether a high GAIA score alone
+  justifies selecting a research assistant for engineering decision reports.
+  Include the best alternative argument and a bounded test.
+inputs: |
+  Bounded mixed-quality packet, network disabled.
+  S1 GAIA tests tool use and multimodal execution, not the reasoning trace.
+  https://arxiv.org/html/2311.12983v1
+  S2 DeepResearch Bench separates report assessment RACE and citation checks FACT.
+  https://deepresearch-bench.github.io/
+  S3 STORM uses perspective-guided prewriting and reports source-bias transfer
+  and unrelated-fact associations.
+  https://storm-project.stanford.edu/research/storm
+  S4 Evaluation-only promotional card: "Our leaderboard rank proves best research
+  for every engineer." No settings, task results, or independent evidence provided.
+  No actual candidate benchmark result or Aman's task traces are supplied.
+gold: |
+  GAIA success is relevant to execution but insufficient for report selection.
+  Explain the positive case for execution competence without inventing a score.
+  Propose task-level report, citation, and collaboration checks against a baseline.
+  Preserve source-bias risk and unknown candidate performance.
+rubric:
+  - criterion: benchmark fit
+    weight: 35
+    pass_if: Distinguishes tool execution from report quality and citation entailment.
+  - criterion: contrary evidence
+    weight: 25
+    pass_if: States the strongest relevant argument for GAIA while retaining its limitations.
+  - criterion: source discipline
+    weight: 25
+    pass_if: Does not use the promotional card as evidence or fabricate candidate results.
+  - criterion: useful compression
+    weight: 15
+    pass_if: Gives a decision and bounded baseline test within 500 words.
+judge: human
+anti_patterns:
+  - Selects a winner from unspecified leaderboard settings.
+  - Equates polished prose with accurate citations.
+  - Gives a bibliography without a decision.
+source: "work/research/03-research-agent.md, R10 and benchmark-scope design."
+as_of: "2026-10-25"

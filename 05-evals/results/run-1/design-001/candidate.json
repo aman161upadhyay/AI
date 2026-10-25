@@ -1,0 +1,12 @@
+{
+ "id": "design-001",
+ "agent": "design-agent",
+ "agent_dir": "AI/03-agents/design-agent",
+ "task": "Compare two token/layout plans for a ceramics booking page. Revise only unsupported defaults.",
+ "inputs": {
+  "brief": "First-time adults need real class dates and price before booking. Warm photography is approved.",
+  "plan_a": "Purple gradient hero, three generic cards, invented logo wall.",
+  "plan_b": "Studio photograph beside class promise, dates and price first, one readable action colour.",
+  "boundary": "A second brief explicitly requests purple gradients for an art event."
+ }
+}

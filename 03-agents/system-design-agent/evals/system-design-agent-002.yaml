@@ -1,0 +1,29 @@
+id: system-design-agent-002
+agent: system-design-agent
+title: Payment intake must tolerate duplicate and out-of-order events
+task: Produce an API and job contract for payment webhooks.
+inputs:
+  brief: The browser success redirect grants access. The webhook handler parses JSON before checking authenticity, emails the receipt, updates entitlements, and retries the whole request after any error.
+  failure: Provider event E2 arrives twice before older event E1. The handler times out after email delivery.
+gold:
+  criteria:
+    - Verify provider signatures against the raw body before trusted processing.
+    - Persist or durably enqueue deduplicated event IDs before acknowledgment.
+    - Separate processing and email with retry/idempotency semantics.
+    - Reconcile provider state for ordering; do not trust browser redirects.
+rubric:
+  - criterion: Authenticity and intake
+    weight: 35
+    pass_if: Requires raw-body signature verification and durable deduplicated intake.
+  - criterion: Retry and state semantics
+    weight: 40
+    pass_if: Defines duplicate and ordering handling plus timeout-after-success reconciliation.
+  - criterion: Tests and boundaries
+    weight: 25
+    pass_if: Specifies unsigned duplicate out-of-order and failed-worker tests without live billing actions.
+judge: human
+anti_patterns:
+  - Accept unsigned events or browser redirects as payment truth.
+  - Retry email and entitlement mutations without independent idempotency.
+source: Original case derived from Stripe webhook documentation; https://docs.stripe.com/webhooks
+as_of: "2026-10-25"

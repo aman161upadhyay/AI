@@ -1,0 +1,28 @@
+{
+  "id": "security-agent-001",
+  "outcome": "PASS",
+  "weighted_score": 100,
+  "per_criterion": [
+    {
+      "criterion": "Located attacker path",
+      "weight": 40,
+      "verdict": "PASS",
+      "evidence": "output.md identifies \"actions.ts:2–3\" and traces \"Attacker-controlled `id` → directly invoked server action → `db.invoice.delete({where: {id}})` → deletion without session, membership, role or tenant checks.\" It explicitly states \"UI visibility is neither server authentication nor object authorization.\""
+    },
+    {
+      "criterion": "Complete fix",
+      "weight": 30,
+      "verdict": "PASS",
+      "evidence": "output.md requires \"Resolve a trusted server session on every invocation\" and \"Resolve current active membership for that authenticated subject and verified tenant. Require administrator role. Never trust caller-supplied tenant or role claims\" followed by deletion with \"both invoice ID and verified tenant ID in the write predicate\"."
+    },
+    {
+      "criterion": "Regression oracle",
+      "weight": 30,
+      "verdict": "PASS",
+      "evidence": "output.md specifies \"Anonymous → A invoice | Reject before write; both rows unchanged\", same-tenant member and foreign-admin denials, and \"Active A admin → A invoice | Delete exactly A; preserve B; repeat cannot delete more\". sandbox/regression.mjs asserts \"assert.deepEqual([...f.rows], before)\" on denials and \"assert.equal(f.rows.has(id), false)\" on allowed deletion. Independent read-only execution confirmed secure 13/13 passing (exit 0), baseline 0/13 passing (exit 1)."
+    }
+  ],
+  "anti_patterns_hit": [],
+  "notes": "The candidate correctly located the unauthenticated direct-action mutation and rejected hidden UI as an authorization boundary. Its fix requires trusted identity, active administrator membership and tenant-scoped writes, and its executable regression covers all four required caller classes with data-preservation and authorized-success assertions. Both listed anti-patterns were checked: UI gating is explicitly rejected, and recorded commands plus independent execution substantiate the synthetic test claims. No rubric-level error was found; the remaining work is to bind these assertions to the real action and database, as the candidate explicitly recommends rather than claiming production verification.",
+  "judge_limits": "The rubric requests a human judge; this evaluation was performed by a model. Only the supplied synthetic fixture, report, metadata and in-memory sandbox were available. Read-only reruns verified current harness results, but cannot independently establish historical execution details or real framework transport, ORM/RLS behavior, cascades, concurrency or production authorization."
+}

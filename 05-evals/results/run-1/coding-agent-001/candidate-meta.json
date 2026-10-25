@@ -1,0 +1,35 @@
+{
+  "skills_loaded": [
+    "scoped-context-reading",
+    "token-budgeted-task",
+    "vendored/superpowers/test-driven-development",
+    "vendored/superpowers/verification-before-completion"
+  ],
+  "files_read": [
+    "/home/runner/workspace/work/evals/run-1/coding-agent-001/candidate.json",
+    "AI/03-agents/coding-agent/SYSTEM-PROMPT.md",
+    "AI/03-agents/coding-agent/WORKFLOW.md",
+    "AI/03-agents/coding-agent/skills/README.md",
+    "AI/03-agents/coding-agent/skills/scoped-context-reading/README.md",
+    "AI/03-agents/coding-agent/skills/token-budgeted-task/README.md",
+    "AI/03-agents/coding-agent/skills/vendored/README.md",
+    "AI/03-agents/coding-agent/skills/scoped-context-reading/SKILL.md",
+    "AI/03-agents/coding-agent/skills/token-budgeted-task/SKILL.md",
+    "AI/03-agents/coding-agent/skills/vendored/superpowers/README.md",
+    "AI/03-agents/coding-agent/skills/vendored/superpowers/test-driven-development/README.md",
+    "AI/03-agents/coding-agent/skills/vendored/superpowers/verification-before-completion/README.md",
+    "AI/03-agents/coding-agent/skills/vendored/superpowers/test-driven-development/SKILL.md",
+    "AI/03-agents/coding-agent/skills/vendored/superpowers/verification-before-completion/SKILL.md",
+    "/home/runner/workspace/work/evals/run-1/coding-agent-001/sandbox/token.cjs",
+    "/home/runner/workspace/work/evals/run-1/coding-agent-001/sandbox/token.test.cjs"
+  ],
+  "commands_run": [
+    "pwd; ls AI/03-agents/coding-agent; ls AI/03-agents/coding-agent/skills",
+    "cd /home/runner/workspace/work/evals/run-1/coding-agent-001/sandbox && node --test token.test.cjs",
+    "cd /home/runner/workspace/work/evals/run-1/coding-agent-001/sandbox && node --test token.test.cjs && printf '\\nFinal candidate review:\\n' && cat token.cjs token.test.cjs && printf '\\nCandidate hashes:\\n' && sha256sum token.cjs token.test.cjs"
+  ],
+  "questions_asked": [
+    "The token cap is supplied, but dollar, time, and tool-call caps are not. What limits should apply?"
+  ],
+  "self_reported_limits": "Used only supplied task facts and local sandbox execution. Observed regression fail before changing implementation, then all three tests pass. No broader suite was supplied or run. Missing dollar, time, and tool-call caps were raised; no reply or independent budget telemetry was available. Continued only the user's requested bounded sandbox task, without workers or external actions. No prohibited evaluation contents were opened. Source edits were restricted to the two sandbox files; requested report and metadata were written in this case folder."
+}

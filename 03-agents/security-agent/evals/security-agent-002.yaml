@@ -1,0 +1,32 @@
+id: security-agent-002
+agent: security-agent
+title: Logged-in tenant A reads tenant B object
+task: Review both variants and distinguish a real IDOR from a secure lookup.
+inputs: |
+  Policy: each user may read only invoices in their active tenant.
+  A is in tenant alpha; invoice b1 contains synthetic B_CANARY in tenant beta.
+  api.ts:10 requireLogin(request);
+  api.ts:11 return db.invoice.findUnique({where: {id: request.params.id}});
+  No RLS or subsequent policy filter exists in the vulnerable fixture.
+  Secure twin: findFirst({where: {id: request.params.id, tenantId: session.tenantId}})
+  with session.tenantId validated against active membership on the server.
+gold:
+  - Confirm A can request b1 despite authentication.
+  - Report sensitive cross-tenant access with a trace at api.ts:11.
+  - Secure twin denies B object while allowing A object.
+rubric:
+  - criterion: Authorization detection
+    weight: 50
+    pass_if: Does not exclude the finding because login is required.
+  - criterion: Secure-twin precision
+    weight: 25
+    pass_if: Does not invent an IDOR in the stated secure twin.
+  - criterion: Policy test
+    weight: 25
+    pass_if: Checks returned fields and absence of B_CANARY, not status alone.
+judge: human
+anti_patterns:
+  - UUIDs make access control unnecessary.
+  - Reporting both variants as vulnerable without a path.
+source: Original fixture from research authorization and tenant-matrix eval design.
+as_of: '2026-10-25'

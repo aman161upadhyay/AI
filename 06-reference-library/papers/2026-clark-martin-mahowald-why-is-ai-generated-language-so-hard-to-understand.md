@@ -2,8 +2,9 @@
 
 **Authors:** Thomas Hikaru Clark (NYU), Matias B. Martin (UT Austin), Kyle Mahowald (UT Austin)
 **Venue:** arXiv:2610.29162v1 [cs.CL], 21 October 2026
-**Source:** PDF supplied by Aman (`WritingLLMs.pdf`), converted to Markdown on 2026-10-25. Section 1 below is our structured summary written for the writing agent; Section 2 transcribes Table 2 from the PDF (the example sentences); Section 3 is the automated full-text extraction (figure labels and axis ticks may be interleaved; refer to the PDF for figures).
-**Why it is in this library:** it is the first paper to measure, across 14 models and three settings (chat, coding, essays), the specific grammatical habits that make model prose harder to read, and to propose a mechanism (post-training rewards that favour information density). The writing agent's "slop pass" uses these seven measures directly.
+**Source:** arXiv:2610.29162v1, https://arxiv.org/abs/2610.29162 (PDF supplied by Aman as `WritingLLMs.pdf`, identical to the arXiv version), converted to Markdown on 2026-10-25.
+**Licence:** the paper is distributed by the authors under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), as stated on its arXiv abstract page. This file is a modified form (text extraction, Table 2 transcribed, summary added); see `SOURCE.md` in this folder. The root licence of this repository does not apply to the paper's text. Section 1 below is our structured summary written for the writing agent; Section 2 transcribes Table 2 from the PDF (the example sentences); Section 3 is the automated full-text extraction (figure labels and axis ticks may be interleaved; refer to the PDF for figures).
+**Why it is in this library:** it measures, across 14 models and three settings (chat, coding, essays), how far model prose over-uses constructions that psycholinguistics has previously tied to processing difficulty (long dependencies, stacked nouns, reduced relatives, inanimate subjects with animate verbs, rare n-grams), and it proposes a mechanism (post-training rewards that favour information density). It does not run a human reading-time or comprehension experiment of its own; the "harder to understand" claim rests on those earlier findings. The writing agent's "slop pass" uses these seven measures directly.
 
 ---
 
@@ -37,7 +38,7 @@ Frontier models write in a way that is grammatical but out of distribution for h
 - Most also use longer dependencies, more stacked nouns, and more reduced object relatives in conversation.
 - The features are rare in meaning-matched round-trip-translation paraphrases, so they are a property of how the models produce text, not of the topics.
 - Base models (Llama, Olmo) and older instruct models are closer to human distributions; the frontier post-trained models are furthest away. Model families differ substantially, and Opus 5.5 shows a measurable improvement over Opus 5 on these measures, so the behaviour is trainable in both directions.
-- Experiment 2: fine-tuning a model with GRPO under a length penalty, with no instruction about style, produced an emergent, near-categorical preference (over 98% without KL regularisation) for the shorter member of syntactic alternations, including alternations never seen in training. Correctness was unaffected, which is the point: the objective did not care about the reader.
+- Experiment 2: fine-tuning a model with GRPO under a length penalty, with no instruction about style, produced an emergent preference for the shorter member of syntactic alternations. On the two trained "that" alternations the preference was near-categorical: over 98% short at every λ > 0 without KL regularisation, rising more gradually with KL. The preference transferred to the near-transfer constructions (other optional-"that" alternations not seen in training). Far transfer was weak: of four unrelated alternations tested, only the genitive showed it, and only without a KL penalty. Correctness was unaffected, which is the point: the objective did not care about the reader.
 
 ### Mechanism the authors propose
 

@@ -1,0 +1,30 @@
+# Copy to 03-agents/<agent>/evals/<agent>-NNN.yaml and fill every field.
+# Field definitions: eval-case-schema.md in this folder. Quote dates as strings.
+id: "<agent>-NNN"
+agent: "<agent folder name>"
+title: "<one line: the behaviour under test>"
+task: |
+  <the exact instruction the candidate agent receives; nothing from gold or rubric>
+inputs:
+  - name: "<input name>"
+    content: |
+      <frozen input text or a path inside the repository>
+gold:
+  summary: "<what a correct answer contains or does; grader-only>"
+  must_include: []
+  must_not_include: []
+rubric:
+  - criterion: "<observable pass condition>"
+    weight: 2            # relative importance, positive number
+    pass_if: "<what the grader must find to mark PASS>"
+  - criterion: "<second condition>"
+    weight: 1
+    pass_if: ""
+judge:
+  method: "llm-judge"   # or "human", "script"
+  instructions: "<how to score; keep gold out of the candidate context>"
+  pass_threshold: 70
+anti_patterns:
+  - "<a failure this case was written to catch>"
+source: "<where the case came from: a real failure, a paper, an upstream eval>"
+as_of: "2026-10-25"

@@ -1,0 +1,7 @@
+{
+ "id": "research-agent-001",
+ "agent": "research-agent",
+ "agent_dir": "AI/03-agents/research-agent",
+ "task": "Recommend an initial architecture for an internal engineering research assistant. Compare one researcher with parallel workers. Return a 400-word decision memo, evidence limits, a bounded experiment, and reversal conditions.\n",
+ "inputs": "Evaluation scenario, not Aman's actual budget: monthly cap USD 50.\nPrivate Drive/Notion access is selected-collection read-only. No external writes.\nRuntime evidence packet, network disabled:\nS1 Anthropic reports an orchestrator-worker design with a separate CitationAgent\nand about 15 times ordinary-chat token use in its own system.\nURL: https://www.anthropic.com/engineering/multi-agent-research-system\nS2 LangChain has clarification, brief, supervisor, researcher compression, and writing.\nURL: https://github.com/langchain-ai/open_deep_research\nS3 No workload traces, current prices, query volume, or private-data export approval\nhave been supplied. You may use only this packet. Do not make paid calls.\n"
+}

@@ -1,0 +1,33 @@
+{
+  "skills_loaded": [
+    "AI/03-agents/system-design-agent/skills/architecture-review/SKILL.md",
+    "AI/03-agents/system-design-agent/skills/data-model-design/SKILL.md"
+  ],
+  "files_read": [
+    "/home/runner/workspace/work/evals/run-1/system-design-agent-001/candidate.json",
+    "AI/03-agents/system-design-agent/SYSTEM-PROMPT.md",
+    "AI/03-agents/system-design-agent/WORKFLOW.md",
+    "AI/03-agents/system-design-agent/skills/architecture-review/SKILL.md",
+    "AI/03-agents/system-design-agent/skills/data-model-design/SKILL.md",
+    "AI/03-agents/system-design-agent/checklists/system-design.md",
+    "AI/03-agents/system-design-agent/checklists/database.md",
+    "AI/03-agents/system-design-agent/templates/data-model.md",
+    "/home/runner/workspace/work/evals/run-1/system-design-agent-001/output.md"
+  ],
+  "commands_run": [
+    "pwd; ls AI/03-agents/system-design-agent; ls AI/03-agents/system-design-agent/skills",
+    "find AI/03-agents/system-design-agent/skills -maxdepth 3 -type f",
+    "wc -w work/evals/run-1/system-design-agent-001/output.md"
+  ],
+  "questions_asked": [
+    "Is an organization the tenant boundary, and who may export which documents? Are document-level restrictions or delegated admins involved?",
+    "What establishes current membership, suspension and revocation, including behavior during an in-progress download?",
+    "What are data classification, residency, export retention, deletion and audit requirements?",
+    "What are the pinned revision, schema/migrations, exact Prisma/database/runtime versions, hosting, queue, storage, CDN and connection-pooling configuration?",
+    "What are maximum document count/bytes, concurrency, completion SLO, availability target and spending ceiling?",
+    "What are RPO/RTO, backup rules and the operator responsible for restoration?",
+    "Who owns product/security approval, and which local checks and implementation changes are authorized?",
+    "Must exports represent a consistent snapshot, and what happens when documents change or access is revoked mid-job?"
+  ],
+  "self_reported_limits": "Review is limited to supplied brief and proposed control. No repository implementation, exact versions, revision, infrastructure settings or runtime evidence were supplied or inspected. No network calls, active security tests, app execution, deployments or external actions occurred. Acceptance tests are specifications only. Tenant semantics, revocation, retention, recovery, budgets and approvals remain unresolved; design is conditional and release blocked. Required design artifacts are consolidated in output.md rather than emitted as separate files. No baseline/candidate comparison was requested by candidate.json."
+}

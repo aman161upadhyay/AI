@@ -1,0 +1,7 @@
+Impeccable reference adaptation, 2026-10-25.
+Derived from pbakaus/impeccable commit 3671d50f0ac9a662ce0615e85a256110c9cd720b, Apache License 2.0.
+Modified files: IMPECCABLE-REFERENCE.md and the eight Markdown playbooks under reference/.
+The main skill body was renamed, stripped of metadata and runtime setup, and converted to a reading map.
+Playbooks received attribution, modification and non-execution notices; their original bodies are otherwise preserved.
+The launcher, executable helpers, detector, hooks and generated runtime assets are excluded.
+Upstream LICENSE and NOTICE.md are preserved. See SOURCE.md for the full modification record.

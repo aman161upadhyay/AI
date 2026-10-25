@@ -1,0 +1,34 @@
+{
+  "id": "research-agent-001",
+  "outcome": "FAIL",
+  "weighted_score": 85,
+  "per_criterion": [
+    {
+      "criterion": "decision fit",
+      "weight": 30,
+      "verdict": "PASS",
+      "evidence": "output.md: \"The strongest alternative is bounded parallel research for genuinely separable questions\" and \"Prices, query volume, and traces are absent, so neither architecture has a defensible monthly estimate.\" The proposed USD 5 allowance is explicitly an approval-dependent cap, not an invented price or run-count estimate."
+    },
+    {
+      "criterion": "evidence discrimination",
+      "weight": 30,
+      "verdict": "PASS",
+      "evidence": "output.md: \"This is an attributed system-specific observation, not a multiplier for our baseline, dollar cost, or expected accuracy.\" It also describes LangChain stages as \"not proof that parallel workers improve this workload.\""
+    },
+    {
+      "criterion": "verification and privacy",
+      "weight": 25,
+      "verdict": "PASS",
+      "evidence": "output.md: \"Use an independent verification pass\" and \"Deny writes and unapproved export; keep private retrieval inside an approved processing boundary. If that boundary is unspecified, use only the supplied packet until clarified.\""
+    },
+    {
+      "criterion": "reversible experiment",
+      "weight": 15,
+      "verdict": "FAIL",
+      "evidence": "output.md specifies \"the same model configuration, corpus, answer requirements, and citation pass\" and \"at most USD 5 total for this experiment,\" but does not match cost/token allowances between baseline and parallel arms. A shared experiment ceiling is not a matched-budget comparison. Observable reversal gates are present: \"at least 20% lower median elapsed time\" and reversal after \"an export violation, unsupported critical citation, or unenforceable spend control.\""
+    }
+  ],
+  "anti_patterns_hit": [],
+  "notes": "The candidate makes a conservative sequential recommendation, fairly presents parallelism for separable workloads, and keeps vendor evidence system-specific. It explicitly preserves citation review and refuses to infer export permission or affordability from read access and the monthly cap; none of the three listed anti-patterns is exhibited. The experiment controls inputs and specifies observable gates, but its total USD 5 ceiling does not establish equal budgets for the two architectures, so the reversible-experiment hard requirement fails under a strict reading. Specify identical per-question, per-arm spending or token ceilings including supervision, synthesis, verification, and retries, and describe handling of budget exhaustion.",
+  "judge_limits": "The rubric requests a human judge; this assessment is by a model. Only the supplied packet, response, metadata, and sandbox research artifacts were inspected; original sources, actual billing, privacy enforcement, and comparative runtime performance were not independently verified. No executable tests were present, and the proposed experiment was not performed."
+}

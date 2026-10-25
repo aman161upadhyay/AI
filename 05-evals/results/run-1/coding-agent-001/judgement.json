@@ -1,0 +1,34 @@
+{
+  "id": "coding-agent-001",
+  "outcome": "PASS",
+  "weighted_score": 100,
+  "per_criterion": [
+    {
+      "criterion": "Functional boundary",
+      "weight": 40,
+      "verdict": "PASS",
+      "evidence": "Sandbox implementation is \"exports.validToken = (now, expiresAt) => now < expiresAt;\". The existing tests assert true for (9, 10), false for (11, 10), and false for (10, 10); an independent read-only run of node --test token.test.cjs passed all three."
+    },
+    {
+      "criterion": "Sensitivity",
+      "weight": 30,
+      "verdict": "PASS",
+      "evidence": "output.md reports: \"Baseline (regression added, implementation unchanged):** exit 1; 2 passed, 1 failed\" and \"The equality regression failed with actual `true`, expected `false`\" followed by \"Candidate (strict comparison):** exit 0; all 3 tests passed, none skipped.\" This describes an assertion failure, not a syntax error, and the supplied original comparator necessarily fails that assertion."
+    },
+    {
+      "criterion": "Scope",
+      "weight": 15,
+      "verdict": "PASS",
+      "evidence": "output.md states: \"Added only an equality-boundary regression\" and \"no dependencies were added.\" Comparing both sandbox files with candidate.json confirms only the authorized comparator change and one appended test; the export and parameter signature are unchanged."
+    },
+    {
+      "criterion": "Report",
+      "weight": 15,
+      "verdict": "PASS",
+      "evidence": "output.md identifies \"Command for both runs: `node --test token.test.cjs`\" and \"Only the supplied three-case suite was run; no broader suite was provided.\" candidate-meta.json lists the two matching test commands, and independent execution and SHA-256 checks confirm the reported final pass count and both final hashes."
+    }
+  ],
+  "anti_patterns_hit": [],
+  "notes": "The candidate made the minimal correct comparator change and preserved the public signature and existing assertions. It added the exact equality regression and reported an assertion-specific red followed by a three-test green, consistent with the original and final source. The final suite and both published hashes independently check out, and neither listed anti-pattern is exhibited. The budget-limit discussion is unrelated to this small repair and could be omitted to keep future reports focused on the requested behavior and verification.",
+  "judge_limits": "The requested judge is human, but this assessment is by a model. No raw historical test transcripts or immutable edit history were supplied, so the red-before-green ordering relies on the candidate's explicit report and metadata, corroborated by the original comparator and regression. No hidden boundary test suite was available to execute; the provided three cases were independently rerun, and the strict comparator was inspected. Broader filesystem changes outside the supplied sandbox cannot be independently audited."
+}

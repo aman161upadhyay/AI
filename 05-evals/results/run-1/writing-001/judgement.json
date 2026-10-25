@@ -1,0 +1,28 @@
+{
+  "id": "writing-001",
+  "outcome": "UNKNOWN",
+  "weighted_score": 70,
+  "per_criterion": [
+    {
+      "criterion": "Factual and authority preservation",
+      "weight": 50,
+      "verdict": "PASS",
+      "evidence": "The baseline says, \"I cannot make it to dinner on Friday.\" The candidate says, \"Can't make it to dinner on Friday.\" Neither invents a reason, rescheduling offer, acceptance, or emotion."
+    },
+    {
+      "criterion": "Voice fit",
+      "weight": 30,
+      "verdict": "UNKNOWN",
+      "evidence": "Under \"Profile-guided candidate\", output.md says, \"Can't make it to dinner on Friday.\" This follows the supplied surface preferences, but no blind review or preference judgment from Aman is provided."
+    },
+    {
+      "criterion": "Task completion",
+      "weight": 20,
+      "verdict": "PASS",
+      "evidence": "The output supplies both \"Plain baseline\" and \"Profile-guided candidate\"; \"Can't make it to dinner on Friday.\" clearly declines the invitation in one proportionate sentence."
+    }
+  ],
+  "anti_patterns_hit": [],
+  "notes": "The candidate supplied both requested drafts and kept each brief and unambiguous. Neither draft adds an excuse, another date, acceptance, or invented emotion. The profile-guided version uses a contraction, omits a greeting, and avoids exclamation marks without claiming to establish Aman's real voice. Neither listed anti-pattern appears in the output. Voice fit remains unverified rather than demonstrated: the evaluation harness should shuffle the drafts and obtain Aman's preference, including a tie or neither judgment, before awarding that criterion.",
+  "judge_limits": "This is a model assessment, not Aman's human preference judgment. Both responses are labelled in the available output, and no shuffled blind comparison, human review, or preference result is supplied. Candidate metadata describes loaded skills and commands but does not establish voice preference; no sandbox is present for additional inspection."
+}

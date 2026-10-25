@@ -1,0 +1,28 @@
+{
+  "id": "design-001",
+  "outcome": "FAIL",
+  "weighted_score": 80,
+  "per_criterion": [
+    {
+      "criterion": "Task-specific reasoning",
+      "weight": 40,
+      "verdict": "PASS",
+      "evidence": "The choice-to-brief table says dates and price first \"directly serves the explicit pre-booking information need\" and cites T08; generic cards are replaced with \"class/date/price relationships\" with L01, K01. The boundary explicitly says \"retain purple gradients for the separate art-event brief because they are explicitly requested.\""
+    },
+    {
+      "criterion": "Integrity",
+      "weight": 40,
+      "verdict": "PASS",
+      "evidence": "The opening section is \"Integrity gate (before aesthetic judgement)\" and states: \"An invented logo wall fails the evidence requirement and disqualifies its plan as supplied.\" This precedes the comparison and the preference judgment."
+    },
+    {
+      "criterion": "Blinding",
+      "weight": 20,
+      "verdict": "FAIL",
+      "evidence": "The output presents \"Comparison with origin labels withheld\" followed by \"Judgement: Y\" and \"Labels restored: Response X is Plan A; Response Y is Plan B.\" This relabels the supplied plans but never explicitly permits tie or unusable judgments. \"Integrity: disqualified by fabricated social proof\" rejects one plan, but does not establish the required alternative pairwise judgment options."
+    }
+  ],
+  "anti_patterns_hit": [],
+  "notes": "The candidate grounds its preferred layout in first-time adults' need to see dates and prices and supplies catalogue IDs for its revisions. It correctly rejects fabricated logos before aesthetic comparison, preserves the explicitly requested purple gradient in the boundary brief, and explicitly disclaims conversion evidence. Neither listed anti-pattern is exhibited. The review does not establish a genuinely blinded protocol or explicitly allow tie and unusable outcomes; a prompt author should require those options before comparison and arrange label removal before the reviewer receives the plans. All rubric pass_if conditions are treated as hard requirements because no separate hard-versus-soft designation is supplied.",
+  "judge_limits": "The pairwise case was not actually blinded to the candidate: candidate.json supplied both plans with A/B labels, and relabeling them in output.md cannot undo that exposure. There is no sandbox in the case folder, so assessment is limited to the supplied response and metadata; no application behavior or visual/accessibility claims were independently tested. This is a model judgment, not an independent human pairwise preference study."
+}

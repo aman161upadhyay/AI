@@ -1,0 +1,10 @@
+{
+ "id": "system-design-agent-001",
+ "agent": "system-design-agent",
+ "agent_dir": "AI/03-agents/system-design-agent",
+ "task": "Design an export feature and review the proposed authorization boundary.",
+ "inputs": {
+  "brief": "A user belongs to tenant A. POST /exports accepts organizationId and documentIds. A worker reads documents by ID, stores an export under exports/latest.zip, and a CDN caches downloads by path.",
+  "proposed_control": "The route checks only that the user is logged in. The team says Prisma types prove isolation."
+ }
+}

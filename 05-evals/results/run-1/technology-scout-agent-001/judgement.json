@@ -1,0 +1,28 @@
+{
+  "id": "technology-scout-agent-001",
+  "outcome": "PASS",
+  "weighted_score": 100,
+  "per_criterion": [
+    {
+      "criterion": "source weighting",
+      "weight": 40,
+      "verdict": "PASS",
+      "evidence": "output.md labels HN and GitHub Trending as \"Discovery signals only\" and \"Not independent capability replication.\" It labels the vendor claim \"Vendor assertion only; no method, task results, comparator, sample size, settings, judge, or reproducibility basis.\""
+    },
+    {
+      "criterion": "decision",
+      "weight": 35,
+      "verdict": "PASS",
+      "evidence": "output.md selects \"Watch\" and says \"Keep the installed assistant unchanged.\" It states \"exact model ID and baseline results unknown,\" \"No local reproduction or independent replication supplied,\" and \"Access, license, privacy, cost basis, region/hardware and compatibility: Unknown.\""
+    },
+    {
+      "criterion": "next action",
+      "weight": 25,
+      "verdict": "PASS",
+      "evidence": "output.md proposes \"one packet-only desk review\" with \"30 minutes, $0, no network, installations, uploads, or model calls\" and says \"This is a proposal, not a completed review.\" It reports \"Paid model calls: 0. Trials/tests: 0.\" candidate-meta.json lists only directory-inspection commands, consistent with no trial execution."
+    }
+  ],
+  "anti_patterns_hit": [],
+  "notes": "The candidate correctly chose Watch rather than Adopt and explicitly separated discovery attention from performance evidence. It identified the missing baseline identity/results, independent evidence, and compatibility information without inventing model identities, benchmark scores, or replication. Its proposed 30-minute, $0 desk review respects the packet's network and spending constraints, and the separately approved comparison plan preserves the installed assistant. None of the three listed anti-patterns is exhibited; the main presentation improvement would be to shorten the brief and omit the unsupported proposed owner name, which is not needed to satisfy this task.",
+  "judge_limits": "The rubric specifies a human judge; this evaluation is by a model. No sandbox directory was present, so no executable tests or implementation artifacts were available. Reported zero calls, spending, and trials are consistent with candidate-meta.json but cannot be independently audited from complete execution traces. The supplied packet contains no real candidate identity or performance evidence, so actual capability and compatibility remain unverifiable."
+}

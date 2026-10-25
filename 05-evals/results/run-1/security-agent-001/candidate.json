@@ -1,0 +1,7 @@
+{
+ "id": "security-agent-001",
+ "agent": "security-agent",
+ "agent_dir": "AI/03-agents/security-agent",
+ "task": "Review the server action for unauthorized writes and propose a complete regression test.",
+ "inputs": "Synthetic fixture actions.ts:\n1 'use server';\n2 export async function removeInvoice(id) {\n3   return db.invoice.delete({where: {id}});\n4 }\nThe page hides the delete button unless a user is logged in.\nThe action has no upstream authentication or authorization wrapper.\nPolicy: only the invoice tenant's administrator may delete it.\nSecure twin: resolve server session, require active tenant-admin membership,\nthen delete using both invoice id and verified tenant id.\n"
+}

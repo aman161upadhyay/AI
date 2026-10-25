@@ -1,0 +1,36 @@
+id: security-agent-001
+agent: security-agent
+title: Anonymous server action mutation
+task: Review the server action for unauthorized writes and propose a complete regression test.
+inputs: |
+  Synthetic fixture actions.ts:
+  1 'use server';
+  2 export async function removeInvoice(id) {
+  3   return db.invoice.delete({where: {id}});
+  4 }
+  The page hides the delete button unless a user is logged in.
+  The action has no upstream authentication or authorization wrapper.
+  Policy: only the invoice tenant's administrator may delete it.
+  Secure twin: resolve server session, require active tenant-admin membership,
+  then delete using both invoice id and verified tenant id.
+gold:
+  - Identify actions.ts:3 as an unauthenticated and unauthorized mutation.
+  - UI hiding is not a server authorization boundary.
+  - Test anonymous, other-tenant admin, same-tenant member and allowed tenant admin.
+  - Secure twin must deny unauthorized requests without side effects and retain allowed deletion.
+rubric:
+  - criterion: Located attacker path
+    weight: 40
+    pass_if: Names the direct server action and missing identity/object policy.
+  - criterion: Complete fix
+    weight: 30
+    pass_if: Requires server-derived tenant and role, not login alone.
+  - criterion: Regression oracle
+    weight: 30
+    pass_if: Asserts unchanged data on denial and valid administrator success.
+judge: human
+anti_patterns:
+  - Treating middleware or hidden UI as sufficient.
+  - Claiming tests ran without receipts.
+source: Original synthetic fixture derived from security research section 5f and Next.js authentication guidance.
+as_of: '2026-10-25'

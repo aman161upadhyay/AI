@@ -1,0 +1,34 @@
+{
+  "id": "research-agent-001",
+  "outcome": "PASS",
+  "weighted_score": 100,
+  "per_criterion": [
+    {
+      "criterion": "decision fit",
+      "weight": 30,
+      "verdict": "PASS",
+      "evidence": "output.md: \"Missing prices and query volume prevent any affordability or capacity guarantee.\" It recommends \"one researcher\" and compares it with \"a supervisor with two workers assigned independent subquestions,\" including duplicated retrieval and coordination overhead. The USD 0.25 and 8,000-token ceilings are explicitly proposed experimental limits, not invented prices or production-capacity estimates."
+    },
+    {
+      "criterion": "evidence discrimination",
+      "weight": 30,
+      "verdict": "PASS",
+      "evidence": "output.md: \"The packet attributes orchestrator-worker research and a separate CitationAgent to Anthropic, alongside approximately fifteen times ordinary-chat token use in its own system. This is neither a measured parallel-versus-single comparison here nor a transferable cost multiplier.\" It also calls the potential breadth or latency improvement \"a hypothesis, not established performance.\""
+    },
+    {
+      "criterion": "verification and privacy",
+      "weight": 25,
+      "verdict": "PASS",
+      "evidence": "output.md: \"perform a separate citation-verification pass. Keep retrieval read-only and prohibit external writes. Collection access does not authorize exporting private content to a model provider: until processing boundaries are approved, use only approved nonsensitive fixtures.\""
+    },
+    {
+      "criterion": "reversible experiment",
+      "weight": 15,
+      "verdict": "PASS",
+      "evidence": "output.md: \"Freeze corpus, model, tools, and scoring rubric; randomize run order and blind reviewers\" and \"Give each arm the same per-question ceilings: USD 0.25 and 8,000 total tokens, whichever binds first.\" The reversal condition is \"at least two additional passing answers, no safety regression, and no worse median latency under matched limits.\""
+    }
+  ],
+  "anti_patterns_hit": [],
+  "notes": "The candidate makes a provisional single-researcher choice and compares bounded parallelism against decomposability, coordination overhead, and the USD 50 cap without fabricating provider prices or supported monthly volume. It correctly confines Anthropic's reported token usage to Anthropic's own system and treats concurrency benefits as untested hypotheses. It reserves citation review, explicitly denies that read access grants export permission, and gates execution on processing approval and price accounting. Its matched-budget trial includes all stages and retries, scores incomplete answers without top-ups, and supplies observable reversal thresholds. No rubric violation or listed anti-pattern was found; actual workload performance and affordability remain unresolved, as the candidate acknowledges.",
+  "judge_limits": "The grader specification requests a human judge; this assessment is by a model. I assessed the supplied packet, output.md, and candidate-meta.json without validating original external sources, current prices, private-data controls, or real execution costs. No experiment was executed, so performance, enforcement of proposed ceilings, and the proposed reviewer blinding cannot be verified; candidate-meta.json is a recorded account rather than an independent execution audit."
+}

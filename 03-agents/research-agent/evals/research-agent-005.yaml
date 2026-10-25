@@ -1,0 +1,38 @@
+id: research-agent-005
+agent: research-agent
+title: Preserve a lifecycle contradiction
+task: >
+  Decide whether to start a new eval integration from historical and current
+  guidance. Produce a dated recommendation and explain the apparent contradiction.
+inputs: |
+  Bounded packet, network disabled.
+  A: OpenAI historical evals guidance describes datasets, criteria, and hosted runs.
+  https://developers.openai.com/api/docs/guides/evals
+  B: The supplied official deprecation capture says Evals dashboard/API become
+  read-only 2026-10-31 and shut down 2026-11-30.
+  https://developers.openai.com/api/docs/deprecations
+  C: The inspected LangSmith SDK repository was archived 2026-10-16 and directs
+  users to split Python and JavaScript SDKs.
+  https://github.com/langchain-ai/langsmith-sdk/tree/main
+  Decision date: 2026-10-25. No new provider terms have been verified.
+gold: |
+  Historical docs explain abstractions but do not override the dated deprecation.
+  Do not recommend starting on the soon-to-close hosted API or archived SDK.
+  Preserve the dates and request current replacement checks before installation.
+rubric:
+  - criterion: chronology
+    weight: 40
+    pass_if: States both lifecycle dates accurately and explains scope rather than averaging guidance.
+  - criterion: recommendation
+    weight: 35
+    pass_if: Avoids a new dependency on deprecated or archived development targets.
+  - criterion: uncertainty
+    weight: 25
+    pass_if: Separates reusable abstractions from unverified replacement availability or terms.
+judge: human
+anti_patterns:
+  - Chooses the older page because it has more examples.
+  - Calls historical documentation fabricated.
+  - Invents replacement SDK capabilities.
+source: "work/research/03-research-agent.md, R6 adaptation; work/research/08-council-and-evals.md, lifecycle findings."
+as_of: "2026-10-25"
